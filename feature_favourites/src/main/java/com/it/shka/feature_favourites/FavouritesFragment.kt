@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.it.shka.feature_favourites.databinding.FragmentFavouritesBinding
 
-class FavouritesFragment : Fragment(), FavouritesFragmentProvider {
-    override fun provideFavouritesFragment(): Fragment = this
+class FavouritesFragment : Fragment() {
+
     private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(

@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class AccountFragment : Fragment(), AccountFragmentProvider {
-
-    override fun provideAccountFragment(): Fragment = this
+class AccountFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

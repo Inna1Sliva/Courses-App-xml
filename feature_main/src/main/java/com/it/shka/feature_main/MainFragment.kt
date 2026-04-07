@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import com.it.shka.feature_main.databinding.FragmentMainBinding
 
 
-class MainFragment : Fragment(), MainFragmentProvider {
-    override fun provideMainFragment(): Fragment = this
+class MainFragment : Fragment() {
+
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 

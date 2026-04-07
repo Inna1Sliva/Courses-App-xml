@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.it.shka.feature_bottom_navigation.R
 import com.it.shka.feature_bottom_navigation.databinding.FragmentBottomNavBinding
-import com.it.shka.feature_bottom_navigation.domain.NavigationFragment
+import com.it.shka.feature_bottom_navigation.domain.TabFragmentFactory
 import org.koin.android.ext.android.inject
 
 @Suppress("DEPRECATION")
 class BottomNavFragment : Fragment() {
-    private val navigationFragment: List<NavigationFragment> by inject()
+    private val  tabFragmentFactory: TabFragmentFactory by inject()
     private var _binding: FragmentBottomNavBinding? = null
     private val binding get() = _binding!!
+    private val fragments = mutableMapOf<Int, Fragment>()
+    private var activeIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +26,6 @@ class BottomNavFragment : Fragment() {
         return binding.root
 
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBottomNavigation()
@@ -32,9 +33,19 @@ class BottomNavFragment : Fragment() {
     }
 
     private fun showFragment(index: Int) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, navigationFragment[index].fragmentProvider)
-            .commit()
+        val fm = childFragmentManager
+        val transaction = fm.beginTransaction()
+
+        fragments[activeIndex]?.let { transaction.hide(it) }
+
+        val fragment = fragments.getOrPut(index) {
+            tabFragmentFactory.create(index).also {
+                transaction.add(R.id.fragment_container, it, "tab_$index")
+            }
+        }
+
+        transaction.show(fragment).commit()
+        activeIndex = index
     }
 
     private fun setupBottomNavigation() {
