@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/bottomNavFragment">
+    app:startDestination="@id/authFragment">
 
     <fragment
         android:id="@+id/bottomNavFragment"
@@ -10,6 +10,5 @@
         android:label="BottomNavFragment" />
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.it.shka.feature_auth.AuthFragment"
         android:label="AuthFragment" />
 </navigation>

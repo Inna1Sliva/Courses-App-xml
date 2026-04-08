@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.it.shka.feature_auth"
+    namespace = "com.it.shka.core_navigation"
     compileSdk = 36
 
     defaultConfig {
@@ -30,15 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding =true
-    }
 }
 
 dependencies {
-    api(libs.koin.android)
-    api(libs.androidx.navigation.fragment.ktx)
-  //  api((libs.koin.androidx.viewmodel))
+api(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -1,4 +1,16 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">AuthFragment</string>
+    <string name="enter">Вход</string>
+    <string name="placholder">Вход</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="registration">Регистрация</string>
+    <string name="text_signIn">Нет аккаунта?</string>
+    <string name="forgot_your_password">Забыл пароль</string>
+    <string name="enter_your_password">Введите пароль</string>
+    <string name="hint_text">exampele@gmail.ru</string>
+    <string name="description_button_VK">Кнопка регистрации в вк</string>
+    <string name="description_button_OK">Кнопка регистрации в однокласниках</string>
+
 </resources>

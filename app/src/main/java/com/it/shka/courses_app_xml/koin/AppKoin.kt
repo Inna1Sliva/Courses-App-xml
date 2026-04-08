@@ -2,6 +2,8 @@ package com.it.shka.courses_app_xml.koin
 
 import android.app.Application
 import com.it.shka.courses_app_xml.koin.module.FragmentModule
+import com.it.shka.courses_app_xml.koin.module.UseCaseModule
+import com.it.shka.courses_app_xml.koin.module.ViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,7 +16,9 @@ class AppKoin : Application() {
             androidLogger(Level.DEBUG)
             androidContext(this@AppKoin)
             modules(
-                FragmentModule
+                FragmentModule,
+                ViewModelModule,
+                UseCaseModule
             )
         }
     }
