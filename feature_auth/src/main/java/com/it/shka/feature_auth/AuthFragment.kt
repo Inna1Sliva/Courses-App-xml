@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class AuthFragment : Fragment(), AuthFragmentProvider {
+class AuthFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -16,5 +16,5 @@ class AuthFragment : Fragment(), AuthFragmentProvider {
         return inflater.inflate(R.layout.fragment_auth, container, false)
     }
 
-    override fun provideAuthFragment(): Fragment  =this
+
 }
