@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     api(libs.koin.android)
     api(libs.androidx.navigation.fragment.ktx)
   //  api((libs.koin.androidx.viewmodel))

@@ -1,4 +1,14 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="main_fragment">MainFragment</string>
+
+    <string name="search">Поиск курсов...</string>
+    <string name="contentDescription">кнопка фильтра</string>
+    <string name="contentDescription_image">картинка</string>
+    <string name="detailed">Подробнее</string>
+    <string name="text">Text</string>
+    <string name="title">Title</string>
+    <string name="price">30 000 р.</string>
+    <string name="startData">02.01.2020</string>
+    <string name="rate">4.5</string>
+
+
 </resources>

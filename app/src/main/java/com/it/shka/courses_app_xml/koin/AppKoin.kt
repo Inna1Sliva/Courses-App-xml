@@ -1,7 +1,10 @@
 package com.it.shka.courses_app_xml.koin
 
 import android.app.Application
+import com.it.shka.courses_app_xml.koin.module.DataStoreModule
 import com.it.shka.courses_app_xml.koin.module.FragmentModule
+import com.it.shka.courses_app_xml.koin.module.NetworkModule
+import com.it.shka.courses_app_xml.koin.module.RepositoryModule
 import com.it.shka.courses_app_xml.koin.module.UseCaseModule
 import com.it.shka.courses_app_xml.koin.module.ViewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -18,7 +21,10 @@ class AppKoin : Application() {
             modules(
                 FragmentModule,
                 ViewModelModule,
-                UseCaseModule
+                UseCaseModule,
+                DataStoreModule,
+                NetworkModule,
+                RepositoryModule
             )
         }
     }

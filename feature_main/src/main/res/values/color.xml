@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="LightGray">#32333A</color>
+    <color name="green_button">#12B956</color>
+    <color name="color_placholder">#777778</color>
+    <color name="glass">#613F3F4D</color>
 </resources>

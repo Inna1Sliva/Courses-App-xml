@@ -1,4 +1,4 @@
-package com.it.shka.feature_auth.domain
+package com.it.shka.feature_auth.domain.usecase
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -15,7 +15,7 @@ class OpenUrlInBrowserUseCase(
     suspend fun execute(url: String): Result<Unit> = withContext(Dispatchers.Main) {
         runCatching {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+               // Intent.setFlags = Intent.FLAG_ACTIVITY_NEW_TASK
                 addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
             }

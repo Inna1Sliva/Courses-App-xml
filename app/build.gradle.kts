@@ -36,13 +36,18 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":feature_auth"))
     implementation(project(":feature_main"))
     implementation(project(":feature_account"))
     implementation(project(":feature_favourites"))
     implementation(project(":feature_bottom_navigation"))
+    implementation(libs.retrofit2.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.retrofit2.kotlin.coroutines.adapter)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.koin.android)
+   // implementation(libs.koin.androidx.viewmodel)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.core.ktx)

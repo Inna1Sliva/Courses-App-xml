@@ -31,16 +31,18 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
-            viewBinding =true
-        }
+        viewBinding = true
+    }
 
 }
 
 dependencies {
-
+    api((libs.koin.android))
+    api(libs.retrofit2.retrofit)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

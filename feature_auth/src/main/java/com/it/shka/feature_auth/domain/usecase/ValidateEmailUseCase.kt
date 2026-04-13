@@ -1,4 +1,4 @@
-package com.it.shka.feature_auth.domain
+package com.it.shka.feature_auth.domain.usecase
 
 class ValidateEmailUseCase {
     operator fun invoke(email: String): Boolean{

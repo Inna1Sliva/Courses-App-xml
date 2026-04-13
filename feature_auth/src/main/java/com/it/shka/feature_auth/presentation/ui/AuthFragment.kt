@@ -1,5 +1,4 @@
-package com.it.shka.feature_auth.presentation
-
+package com.it.shka.feature_auth.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +8,13 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.it.shka.feature_auth.R
 import com.it.shka.feature_auth.databinding.FragmentAuthBinding
+import com.it.shka.feature_auth.presentation.model.AuthViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : Fragment() {
+
     private val vm: AuthViewModel by viewModel()
     private var _binding: FragmentAuthBinding? = null
     private val binding get() = _binding!!
@@ -29,13 +28,15 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupListeners()
         setupObservers()
         buttonClickListener()
     }
 
     private fun buttonClickListener() {
-        binding.buttonEnter.setOnClickListener {}
+
+        binding.buttonEnter.setOnClickListener {vm.seveUserToken() }
         binding.buttonVk.setOnClickListener { vm.openBrowser("https://vk.com/") }
         binding.buttonOk.setOnClickListener { vm.openBrowser("https://ok.ru/") }
     }

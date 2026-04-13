@@ -1,11 +1,12 @@
-package com.it.shka.feature_auth.presentation
+package com.it.shka.feature_auth.presentation.model
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.it.shka.feature_auth.domain.OpenUrlInBrowserUseCase
-import com.it.shka.feature_auth.domain.ValidateEmailUseCase
-import com.it.shka.feature_auth.domain.ValidatePasswordUseCase
+import com.it.shka.core.UserTokenStorage
+import com.it.shka.feature_auth.domain.usecase.OpenUrlInBrowserUseCase
+import com.it.shka.feature_auth.domain.usecase.ValidateEmailUseCase
+import com.it.shka.feature_auth.domain.usecase.ValidatePasswordUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +16,8 @@ import kotlinx.coroutines.launch
 class AuthViewModel(
     private val validateEmailUseCase: ValidateEmailUseCase,
     private val validatePasswordUseCase: ValidatePasswordUseCase,
-    private val openUrlInBrowserUseCase: OpenUrlInBrowserUseCase
+    private val openUrlInBrowserUseCase: OpenUrlInBrowserUseCase,
+    private val tokenStorage: UserTokenStorage
 ) : ViewModel() {
     private val _email = MutableStateFlow("")
     private val _password = MutableStateFlow("")
@@ -40,6 +42,17 @@ class AuthViewModel(
                 .onFailure {
                     Log.e("openUrlInBrowserUseCase", "not open Browser $it")
             }
+        }
+    }
+    fun seveUserToken(){
+        viewModelScope.launch {
+            tokenStorage.saveUserToken("111")
+                .onSuccess {
+                    Log.e("seveUserToken", "seve user")
+                }
+                .onFailure{
+                    Log.e("seveUserToken", "not seve user $it")
+                }
         }
     }
 
