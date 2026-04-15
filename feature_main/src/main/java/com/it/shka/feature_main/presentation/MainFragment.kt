@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.Visibility
 import com.it.shka.feature_main.databinding.FragmentMainBinding
 import com.it.shka.feature_main.domain.model.Courses
 import com.it.shka.feature_main.presentation.adapter.CoursesAdapter
+import com.it.shka.feature_main.presentation.model.CoursesState
 import com.it.shka.feature_main.presentation.model.MainViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,8 +35,17 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
-            vm.coursesState.collect { value ->
-                setupRecyclerView(value)
+            vm.coursesState.collect { state ->
+                when (state) {
+                    is CoursesState.Loading -> {
+                        binding.progressCircular.visibility = View.VISIBLE
+                    }
+                    is CoursesState.getCourses -> {
+                        binding.progressCircular.visibility = View.GONE
+                        setupRecyclerView(state.courses)
+                    }
+                }
+
             }
         }
 

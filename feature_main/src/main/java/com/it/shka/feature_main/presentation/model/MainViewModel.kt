@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val coursesRepository: CoursesRepository) : ViewModel() {
 
-    private val _coursesState = MutableStateFlow<List<Courses>>(emptyList())
-    val coursesState: StateFlow<List<Courses>> get() = _coursesState
+    private val _coursesState = MutableStateFlow<CoursesState>(CoursesState.Loading)
+    val coursesState: StateFlow<CoursesState> get() = _coursesState
 
     init {
         viewModelScope.launch {
             coursesRepository.getCourses()
                 .onSuccess { courses ->
-                    _coursesState.value = courses
+                    _coursesState.value = CoursesState.getCourses(courses)
                 }
                 .onFailure { Log.e("MainViewModel", "getCourses failed", it) }
         }
