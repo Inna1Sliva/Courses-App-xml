@@ -19,9 +19,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingBottom="25dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:orientation="vertical">
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,9 +38,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="15dp"
                 android:gravity="right"
                 android:orientation="horizontal"
+                android:paddingRight="15dp"
                 tools:ignore="UseCompoundDrawables">
 
                 <TextView
@@ -75,16 +75,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"/>
+            android:paddingRight="15dp" />
     </androidx.core.widget.NestedScrollView>
+
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress_circular"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:visibility="gone"
-        android:indeterminate="true"
+        android:layout_gravity="center"
         android:backgroundTint="@color/green_button"
-        android:backgroundTintMode=""
-               android:layout_gravity="center"/>
+        android:indeterminate="true"
+
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

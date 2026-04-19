@@ -4,6 +4,7 @@ data class Courses(
     val id: Int,
     val title: String,
     val text: String,
+    val image: String,
     val price: String,
     val rate: String,
     val startDate: String,

@@ -1,9 +1,11 @@
 package com.it.shka.feature_main.presentation
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -32,16 +34,21 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupButtonListener()
         lifecycleScope.launch {
             vm.coursesState.collect { state ->
                 when (state) {
                     is CoursesState.Loading -> {
                         binding.progressCircular.visibility = View.VISIBLE
+                        binding.coursesRecyclerView.visibility = View.GONE
                     }
+
                     is CoursesState.getCourses -> {
                         binding.progressCircular.visibility = View.GONE
+                        binding.coursesRecyclerView.visibility = View.VISIBLE
                         setupRecyclerView(state.courses)
                     }
                 }
@@ -52,9 +59,17 @@ class MainFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupButtonListener() {
+        binding.buttTextSorting.setOnClickListener {
+            vm.sortInDescendingOrder()
+        }
+    }
+
+
     private fun setupRecyclerView(courses: List<Courses>) {
         binding.coursesRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-        adapter = CoursesAdapter(courses)
+        adapter = CoursesAdapter(courses, requireActivity())
         binding.coursesRecyclerView.adapter = adapter
     }
 

@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
     api((libs.koin.android))
     api(libs.retrofit2.retrofit)
     implementation(libs.androidx.core.ktx)

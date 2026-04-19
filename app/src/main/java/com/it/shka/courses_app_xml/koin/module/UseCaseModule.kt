@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import com.it.shka.feature_auth.domain.usecase.OpenUrlInBrowserUseCase
 import com.it.shka.feature_auth.domain.usecase.ValidateEmailUseCase
 import com.it.shka.feature_auth.domain.usecase.ValidatePasswordUseCase
+import com.it.shka.feature_main.domain.usecase.SortInDescendingOrderUseCase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -14,4 +15,5 @@ val UseCaseModule = module {
     factory { ValidateEmailUseCase() }
     factory { ValidatePasswordUseCase() }
     factory { OpenUrlInBrowserUseCase(get<Context>(), get()) }
+    factory { SortInDescendingOrderUseCase() }
 }
